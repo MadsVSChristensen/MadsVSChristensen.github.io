@@ -1,32 +1,34 @@
-"use client";
+'use client';
 
-import React from "react";
-import Link from "next/link";
+export default function Navbar() {
+  const navItems = [
+    { label: 'PROJECTS', href: '#projects', active: false },
+    { label: 'ABOUT', href: '#about', active: true },
+    { label: '$BOLE', href: '#bole', active: false },
+    { label: 'SKILLS', href: '#skills', active: false },
+    { label: 'CONTACT', href: '#contact', active: false },
+  ];
 
-export const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 h-20 glass-panel border-b border-[var(--glass-border)]">
-      <div className="container mx-auto px-6 h-full flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-          <div className="text-xl font-mono font-bold text-white tracking-wider glow-text">
-            MADS.DEV
-          </div>
-        </div>
-
-        <div className="hidden md:flex space-x-10">
-          {["About", "Experience", "Projects", "Contact"].map((item) => (
-            <Link
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="relative text-xs font-medium text-emerald-100/60 hover:text-emerald-400 transition-colors uppercase tracking-[0.2em] group"
-            >
-              {item}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-emerald-400 transition-all group-hover:w-full" />
-            </Link>
+    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-emerald-900 bg-black">
+      <div className="mx-auto max-w-7xl px-6 py-4">
+        <ul className="flex list-none items-center justify-center gap-12">
+          {navItems.map((item) => (
+            <li key={item.label}>
+              <a
+                href={item.href}
+                className={
+                  item.active
+                    ? 'block border-b-2 border-emerald-400 pb-1 text-sm font-semibold uppercase tracking-widest text-emerald-400 no-underline'
+                    : 'block text-sm font-semibold uppercase tracking-widest text-emerald-100 no-underline transition-colors hover:text-emerald-400'
+                }
+              >
+                {item.label}
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </nav>
   );
-};
+}

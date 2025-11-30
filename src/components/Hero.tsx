@@ -1,65 +1,83 @@
-"use client";
+'use client';
 
-import React from "react";
-import { CyberTree } from "@/components/ui/CyberTree";
-import { HexagonContainer } from "@/components/ui/HexagonContainer";
-
-export const Hero = () => {
+export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-16 overflow-hidden">
-      {/* Background Elements specific to Hero */}
-      <CyberTree />
+    <section className="relative min-h-screen pt-20">
+      {/* Circuit board pattern background */}
+      <div className="absolute inset-0 opacity-10">
+        <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+          <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+            <path
+              d="M10 10h20M30 10v20M30 30h20M50 30v20M50 50h20"
+              stroke="currentColor"
+              strokeWidth="0.5"
+              fill="none"
+              className="text-emerald-500"
+            />
+            <circle cx="10" cy="10" r="2" fill="currentColor" className="text-emerald-400" />
+            <circle cx="30" cy="30" r="2" fill="currentColor" className="text-emerald-400" />
+            <circle cx="50" cy="50" r="2" fill="currentColor" className="text-emerald-400" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#circuit)" />
+        </svg>
+      </div>
 
-      <div className="relative z-10 text-center space-y-8 max-w-5xl px-4">
-        <div className="flex flex-col items-center animate-fade-in">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/30 border border-emerald-500/30 backdrop-blur-sm mb-6">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-emerald-400 font-mono text-xs tracking-[0.2em] uppercase">
-              System Online
-            </span>
+      <div className="relative mx-auto max-w-7xl px-6 py-20">
+        <div className="flex flex-col items-center gap-16 lg:flex-row lg:items-start lg:justify-between">
+          {/* Left side - Title and tagline */}
+          <div className="max-w-2xl space-y-8">
+            <h1 className="text-5xl font-bold tracking-tight text-emerald-400 glow-text sm:text-6xl lg:text-7xl">
+              EMERALD CITY DEV
+            </h1>
+
+            <p className="text-lg font-medium text-emerald-100/90 sm:text-xl">
+              BUILDING DIGITAL FUTURES,
+              <br />
+              ROOTED IN INNOVATION.
+            </p>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-white glow-text mb-2">
-            MADS CHRISTENSEN
-          </h1>
-          <p className="text-emerald-400 font-mono text-sm md:text-base tracking-[0.5em] uppercase opacity-80">
-            Software Engineer & Digital Architect
-          </p>
-        </div>
+          {/* Center - Tree illustration placeholder */}
+          <div className="relative flex items-center justify-center">
+            <div className="relative h-64 w-64">
+              {/* Glow effect */}
+              <div className="absolute inset-0 animate-pulse rounded-full bg-emerald-500/20 blur-3xl" />
 
-        <p className="text-lg md:text-xl text-emerald-100/70 max-w-2xl mx-auto font-light leading-relaxed">
-          Building high-fidelity digital experiences at the intersection of
-          <span className="text-emerald-300 font-medium"> design</span> and
-          <span className="text-emerald-300 font-medium"> engineering</span>.
-        </p>
+              {/* Simple tree icon */}
+              <div className="relative flex h-full w-full items-center justify-center">
+                <svg
+                  viewBox="0 0 200 200"
+                  className="h-full w-full text-emerald-400"
+                  style={{ filter: 'drop-shadow(0 0 20px rgba(16, 185, 129, 0.6))' }}
+                >
+                  {/* Tree trunk */}
+                  <rect x="90" y="120" width="20" height="60" fill="currentColor" />
 
-        <div className="pt-8 flex flex-col md:flex-row justify-center gap-6 items-center">
-          <button className="group relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
-            <div className="relative px-8 py-4 bg-emerald-950/50 ring-1 ring-emerald-500/50 rounded-lg leading-none flex items-center space-x-2">
-              <span className="text-emerald-100 font-mono text-sm tracking-wider group-hover:text-white transition-colors">
-                INITIALIZE_CONTACT
-              </span>
+                  {/* Tree foliage - layered triangles */}
+                  <path d="M100 30 L140 90 L60 90 Z" fill="currentColor" />
+                  <path d="M100 60 L150 120 L50 120 Z" fill="currentColor" />
+
+                  {/* Decorative circles (tech nodes) */}
+                  <circle cx="70" cy="100" r="4" fill="currentColor" className="animate-pulse" />
+                  <circle cx="130" cy="100" r="4" fill="currentColor" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
+                  <circle cx="100" cy="50" r="4" fill="currentColor" className="animate-pulse" style={{ animationDelay: '1s' }} />
+                </svg>
+              </div>
+
+              {/* Floating tech icons */}
+              <div className="absolute -left-8 top-1/4 h-8 w-8 rounded-lg bg-emerald-500/20 p-1.5 backdrop-blur-sm">
+                <div className="h-full w-full rounded bg-emerald-400/30" />
+              </div>
+              <div className="absolute -right-8 top-1/3 h-8 w-8 rounded-lg bg-emerald-500/20 p-1.5 backdrop-blur-sm">
+                <div className="h-full w-full rounded bg-emerald-400/30" />
+              </div>
+              <div className="absolute bottom-8 left-1/4 h-8 w-8 rounded-lg bg-emerald-500/20 p-1.5 backdrop-blur-sm">
+                <div className="h-full w-full rounded bg-emerald-400/30" />
+              </div>
             </div>
-          </button>
-
-          <button className="px-8 py-4 rounded-lg border border-emerald-500/20 hover:border-emerald-500/50 hover:bg-emerald-900/20 text-emerald-400/80 hover:text-emerald-300 font-mono text-sm tracking-wider transition-all duration-300">
-            VIEW_LOGS
-          </button>
-        </div>
-
-        {/* Tech Decorators */}
-        <div className="absolute top-1/2 left-10 hidden lg:block">
-          <HexagonContainer className="w-16 h-16" glow>
-            <span className="text-xs font-mono text-emerald-500">JS</span>
-          </HexagonContainer>
-        </div>
-        <div className="absolute top-2/3 right-10 hidden lg:block">
-          <HexagonContainer className="w-16 h-16" glow>
-            <span className="text-xs font-mono text-emerald-500">TS</span>
-          </HexagonContainer>
+          </div>
         </div>
       </div>
     </section>
   );
-};
+}
