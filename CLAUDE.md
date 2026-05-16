@@ -24,10 +24,16 @@ npm run lint     # Lint code
 - `src/components/`: React components (Hero, Navbar, etc.)
 - `src/components/ui/`: Reusable UI components
 - `src/lib/`: Utility functions
-- `.github/workflows/`: GitHub Actions for deployment and releases
+- `.github/workflows/`: GitHub Actions for GitHub Pages deployment
 
 ## Key Configuration
 
-- **Static export**: `output: 'export'` in `next.config.ts` for GitHub Pages deployment
-- **Conventional commits**: Used for semantic versioning (`feat:`, `fix:`, `chore:`, etc.)
-- **Theme**: Emerald/teal color palette with custom CSS variables in `src/app/globals.css`
+- **Static export**: `output: 'export'` in `next.config.ts` for GitHub Pages deployment.
+  Repo is a GitHub *user* site → served at domain root, **no `basePath`**.
+- **Tailwind v4**: CSS-first config — theme tokens via `@theme` in `src/app/globals.css`
+  (no `tailwind.config.ts`).
+- **Theme**: "Bioluminescent data-grove" — deep teal/emerald palette, glowing inline-SVG
+  tree mark, subtle circuit grid; CSS variables in `src/app/globals.css`. Fonts:
+  Chakra Petch (display), Sora (body), JetBrains Mono (mono) via `next/font`.
+- **Conventional commits**: Optional convention for readable history. No automated
+  release/versioning pipeline (semantic-release intentionally not used).

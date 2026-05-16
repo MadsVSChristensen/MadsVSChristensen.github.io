@@ -1,75 +1,46 @@
-'use client';
+import Section from "@/components/ui/Section";
+import { experience } from "@/lib/content";
 
 export default function Experience() {
-  const projects = [
-    {
-      title: 'ECO-SYNTH ANLAYZER',
-      description:
-        "You've ip dplbin rhaeruposruipes. Tretat sri apevem cimst luuic sidicis dekm strieruim coine dislamst Qos disalumnger par quia enu praesipio.",
-      buttonText: 'Research More',
-    },
-    {
-      title: 'NEURAL HARVEST PLATFORM',
-      description:
-        'Vir tirust que fam loi depuly aiust Tov seveni clusiat vi cama lonain hare difenist is istro manezianure iesipo asvhoaram cuvvidula.',
-      buttonText: 'Install Hardware',
-    },
-    {
-      title: "FOREST'S EDGE FORGE AI",
-      description:
-        'Vir limur poriutas si corpingat Tov seveni clusiat vi lorempsum qnecesariat laed iment euna expius quis cani escium nuevni pristquis.',
-      buttonText: 'Activate Fusion',
-    },
-  ];
-
   return (
-    <section id="projects" className="relative py-20">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-lg border border-emerald-500/30 bg-gradient-to-br from-emerald-950/40 to-emerald-900/20 p-6 backdrop-blur-sm transition-all hover:border-emerald-400/50 hover:shadow-lg hover:shadow-emerald-500/20"
-            >
-              {/* Icon placeholder */}
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-500/20">
-                <div className="h-6 w-6 rounded-full bg-emerald-400/50" />
+    <Section
+      id="experience"
+      index="02"
+      eyebrow="Where I've worked"
+      title="Experience"
+    >
+      <ol className="relative flex flex-col gap-6 border-l border-[var(--color-line)] pl-6 sm:pl-10">
+        {experience.map((job) => (
+          <li key={`${job.company}-${job.period}`} className="relative">
+            <span className="absolute -left-[1.6rem] top-2 h-3 w-3 -translate-x-1/2 rounded-full bg-[var(--color-emerald)] shadow-[0_0_14px_var(--color-emerald)] sm:-left-[2.6rem]" />
+            <div className="panel p-6 sm:p-8">
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                <h3 className="font-[family-name:var(--font-display)] text-xl font-semibold text-[var(--color-fg)]">
+                  {job.role}
+                  <span className="text-[var(--color-emerald)]"> · {job.company}</span>
+                </h3>
+                <span className="font-[family-name:var(--font-mono)] text-xs tracking-wider text-[var(--color-fg-faint)]">
+                  {job.period}
+                </span>
               </div>
-
-              {/* Expand icon (top right) */}
-              <div className="absolute right-4 top-4 text-emerald-400/50">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
-                  />
-                </svg>
-              </div>
-
-              {/* Title */}
-              <h3 className="mb-3 text-lg font-bold text-emerald-400">{project.title}</h3>
-
-              {/* Description */}
-              <p className="mb-6 text-sm leading-relaxed text-emerald-100/70">
-                {project.description}
+              <p className="mt-1 font-[family-name:var(--font-mono)] text-xs text-[var(--color-fg-faint)]">
+                {job.location}
               </p>
-
-              {/* Button */}
-              <button className="rounded border border-emerald-500/50 bg-emerald-500/10 px-4 py-2 text-xs font-medium text-emerald-400 transition-all hover:bg-emerald-500/20 hover:border-emerald-400">
-                {project.buttonText}
-              </button>
+              <ul className="mt-4 flex flex-col gap-3">
+                {job.points.map((p, i) => (
+                  <li
+                    key={i}
+                    className="flex gap-3 text-sm leading-relaxed text-[var(--color-fg-muted)]"
+                  >
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-emerald)]/60" />
+                    {p}
+                  </li>
+                ))}
+              </ul>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
+          </li>
+        ))}
+      </ol>
+    </Section>
   );
 }
